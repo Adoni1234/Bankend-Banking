@@ -150,7 +150,10 @@ namespace ArtemisBanking.Infrastructure.Identity
                     ValidateAudience = true,
                     ValidAudience = jwtSettings.Audience,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
+                    ClockSkew = TimeSpan.Zero,
+                    // El JWT emitido en GenerateJwtToken mete los roles en un claim custom "roles"
+                    // (no en ClaimTypes.Role), asi que sin esto [Authorize(Roles = "...")] nunca autoriza a nadie.
+                    RoleClaimType = "roles"
                 };
                 
                 opt.Events = new JwtBearerEvents()
