@@ -85,10 +85,10 @@ public class LoanController : BaseApiController
          var totalDebtOfUser = await _riskService.CalculateClientTotalDebt(dto.ClientId);
          var capitalWithInterests = _riskService.CalculateTotalLoanDebt(dto.Amount, dto.AnualRate, dto.TermMonths);
 
-         if (totalDebtOfUser > averageClientDebtOfSystem || (totalDebtOfUser + capitalWithInterests) > averageClientDebtOfSystem)
-         {
-            return Conflict("El clientee se convierte de alto riesgo");
-         }
+         // if (totalDebtOfUser > averageClientDebtOfSystem || (totalDebtOfUser + capitalWithInterests) > averageClientDebtOfSystem)
+         // {
+         //    return Conflict("El clientee se convierte de alto riesgo");
+         // }
 
          var createResult = await _loanService.AddAsync(new LoanDto
          {
