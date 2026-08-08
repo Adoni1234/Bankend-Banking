@@ -336,6 +336,7 @@ public class ClientController : BaseApiController
         }
     }
 
+
     private static ClientAccountApiDto MapAccount(SavingAccountDto a) => new()
     {
         AccountNumber = a.Id,
